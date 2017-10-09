@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-section alert">
+    <h4><a name="release-notes-critical-changes"></a>Critical Changes</h4>
+    <h5>Batch Data Import</h5>
+
+    <p>To support Batch Data Import, you must perform some setup tasks. These steps are required for all orgs using the NPSP Data Importer (regardless of whether you plan to use the new Batch Data Import features.)</p>
+
+    <ul>
+      <li>In the profiles of all users who perform data imports using the NPSP Data Importer:
+        <ul>
+          <li>Set the NPSP Data Import Batch tab setting to Default On.</li>
+          <li>Set object permissions for the NPSP Data Import Batch object to Read, Create, Edit.</li>
+          <li>In the NPSP Data Import object settings, set field permissions for the NPSP Data Import Batch field to Read Access and Edit Access.</li>
+          <li>Override the Clone, Edit, and New buttons on the NPSP Data Import Batch object to use the BDI_BatchOverride Visualforce page.</li>
+        </ul>
+      </li>
+      <li>In the NPSP Data Import Batch page layout:
+        <ul>
+          <li>Add all available fields to the layout.</li>
+          <li>Add the Process Batch button to the layout.</li>
+          <li>To schedule the new NPSP 09 - Data Import Batch Processing job, a System Administrator in your org needs to visit the NPSP Settings page. Visiting this page automatically schedules all NPSP jobs. If you enabled the NPSP Setting Don't Auto Schedule Default NPSP Jobs, you'll need to manually schedule the new job in Setup.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

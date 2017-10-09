@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-section">
+    <h4><a name="release-notes-changes"></a>Changes</h4>
+    <ul>
+      <li>You may notice some minor layout updates on many pages in NPSP. That is because we updated the underlying Salesforce Lightning Design System version.</li>
+      <li>When the Amount on an Opportunity with an associated Campaign or Recurring Donation is updated from null to a value, Allocations are now created based on the Campaign's General Accounting Unit (GAU) or the Recurring Donation's GAU, instead of the Default Allocation GAU. If the Opportunity is associated with both a Campaign and a Recurring Donation (that have GAUs), the Recurring Donation GAU takes precedence.</li>
+      <li>When Enable Automatic Verification (in NPSP Settings under People &gt; Addresses &gt; Verification API Account Settings) is selected, NPSP no longer tries to verify Addresses that already have the Verified checkbox selected.</li>
+      <li>When verification is attempted, NPSP will now always select an Address's Verified checkbox, regardless of the outcome of the verification. You can use the Verification Status field on an Address to determine if a match was found.</li>
+    </ul>
+  </div>
+</div>
