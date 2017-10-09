@@ -1,0 +1,187 @@
+
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation for Sites</title>
+    <link rel="stylesheet" href="assets/css/app.css">
+  </head>
+  <body>
+
+    <div class="title-bar">
+      <div class="title-bar-left">
+        <span class="title-bar-title">NPSP 3.109 - Release Dashboard</span>
+      </div>
+      <div class="title-bar-right">
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-8 columns">
+        <div class="card">
+          <div class="card-divider">
+            <h4>Release Dates</h4>
+          </div>
+          <div class="card-section">
+            <ul class="stats-list">
+              <li>
+                Oct 8, 2017 <span class="stats-list-label">Release Created</span>
+              </li>
+              <li>
+                Oct 8, 2017 <span class="stats-list-label">Push to Sandbox</span>
+              </li>
+              <li>
+                Oct 14, 2017 <span class="stats-list-label">Push to Production</span>
+              </li>
+            </ul>
+            <div class="primary progress" role="progressbar" tabindex="0" aria-valuenow="66" aria-valuemin="0" aria-valuetext="Pushed to Sandbox" aria-valuemax="100">
+              <div class="progress-meter" style="width: 66%">
+                <p class="progress-meter-text">Pushed to Sandboxes</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-divider">
+            <h4>Release Notes</h4>
+          </div>
+          <div class="card-section">
+            <ul class="tabs" data-tabs id="release-notes-tabs">
+              <li class="tabs-title is-active"><a data-tabs-target="release-notes-critical-changes" href="#release-notes-critical-changes" aria-selected="true">Critical Changes (1)</a></li>
+              <li class="tabs-title"><a data-tabs-target="release-notes-changes" href="#release-notes-changes">Changes (4)</a></li>
+              <li class="tabs-title"><a data-tabs-target="release-notes-issues-closed" href="#release-notes-issues-closed">Issues Closed (3)</a></li>
+              <li class="tabs-title"><a data-tabs-target="release-notes-metadata-added" href="#release-notes-metadata-added">Added Metadata (1)</a></li>
+              <li class="tabs-title"><a data-tabs-target="release-notes-metadata-deleted" href="#release-notes-metadata-deleted">Deleted Metadata (2)</a></li>
+            </ul>
+        
+            <div class="tabs-content" data-tabs-content="release-notes-tabs">
+              <div class="tabs-panel is-active" id="release-notes-critical-changes">
+                <h5>Batch Data Import</h5>
+                <p>To support Batch Data Import, you must perform some setup tasks. These steps are required for all orgs using the NPSP Data Importer (regardless of whether you plan to use the new Batch Data Import features.)</p>
+                <ul>
+                  <li>In the profiles of all users who perform data imports using the NPSP Data Importer:
+                    <ul>
+                      <li>Set the NPSP Data Import Batch tab setting to Default On.</li>
+                      <li>Set object permissions for the NPSP Data Import Batch object to Read, Create, Edit.</li>
+                      <li>In the NPSP Data Import object settings, set field permissions for the NPSP Data Import Batch field to Read Access and Edit Access.</li>
+                      <li>Override the Clone, Edit, and New buttons on the NPSP Data Import Batch object to use the BDI_BatchOverride Visualforce page.</li>
+                    </ul>
+                  </li>
+                  <li>In the NPSP Data Import Batch page layout:
+                    <ul>
+                      <li>Add all available fields to the layout.</li>
+                      <li>Add the Process Batch button to the layout.</li>
+                      <li>To schedule the new NPSP 09 - Data Import Batch Processing job, a System Administrator in your org needs to visit the NPSP Settings page. Visiting this page automatically schedules all NPSP jobs. If you enabled the NPSP Setting Don't Auto Schedule Default NPSP Jobs, you'll need to manually schedule the new job in Setup.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="tabs-panel" id="release-notes-changes">
+                <ul>
+                  <li>You may notice some minor layout updates on many pages in NPSP. That is because we updated the underlying Salesforce Lightning Design System version.</li>
+                  <li>When the Amount on an Opportunity with an associated Campaign or Recurring Donation is updated from null to a value, Allocations are now created based on the Campaign's General Accounting Unit (GAU) or the Recurring Donation's GAU, instead of the Default Allocation GAU. If the Opportunity is associated with both a Campaign and a Recurring Donation (that have GAUs), the Recurring Donation GAU takes precedence.</li>
+                  <li>When Enable Automatic Verification (in NPSP Settings under People &gt; Addresses &gt; Verification API Account Settings) is selected, NPSP no longer tries to verify Addresses that already have the Verified checkbox selected.</li>
+                  <li>When verification is attempted, NPSP will now always select an Address's Verified checkbox, regardless of the outcome of the verification. You can use the Verification Status field on an Address to determine if a match was found.</li>
+                </ul>
+              </div>
+              <div class="tabs-panel" id="release-notes-issues-closed">
+                <ul>
+                  <li><a href="https://github.com/SalesforceFoundation/Cumulus/issues/1864">#1864</a>: If Audit Fields are enabled through Permission Set, NPSP will insert those fields for new records based on an NPSP Data Import custom field</li>
+                  <li><a href="https://github.com/SalesforceFoundation/Cumulus/issues/12636">#2636</a>: Campaign Allocations not used if a null Amount field is populated after the Opp was previously saved.</li>
+                  <li><a href="https://github.com/SalesforceFoundation/Cumulus/issues/2713">#2713</a>: With address verification, Verification Status field not updating correctly</li>
+                </ul>
+              </div>
+              <div class="tabs-panel" id="release-notes-metadata-added">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>SomeNewCustomObj__c</td>
+                      <td>CustomObject</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="tabs-panel" id="release-notes-metadata-deleted">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>SomeUnusedClass</td>
+                      <td>ApexClass</td>
+                    </tr>
+                    <tr>
+                      <td>SomeUnusedClass_TEST</td>
+                      <td>ApexClass</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="card">
+          <div class="card-divider">
+            <h4><a name="release-notes-changes"></a>Installation Info</h4>
+          </div>
+          <div class="card-section">
+            <a class="button expanded success" href="https://mrbelvedere.salesforcefoundation.org/mpinstaller/npsp">Web Installer (recommended)</a>
+            <a class="button expanded primary" href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t1Y000001I8rn">Manual Install Link</a>
+            <strong>Trialforce Template ID</strong>: 0TT4100000843bA</strong>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-divider">
+            <h4>Build Stats</h4>
+          </div>
+          <div class="card-section">
+            <ul class="stats-list">
+              <li>
+                1001 <span class="stats-list-label">Apex Tests</span>
+              </li>
+              <li>
+                61 <span class="stats-list-label">Browser Tests</span>
+              </li>
+              <li>
+                23 <span class="stats-list-label">Builds</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-divider">
+            <h4>Performance Metrics</h4>
+          </div>
+          <div class="card-section">
+            <div class="dashboard-number-card positive">
+              <h5 class="dashboard-number-value">11,000<br /> BDI Imports/Hour</h5>
+              <div>
+                <p class="dashboard-number-area">Change from 3.108</p>
+                <p class="dashboard-number-delta">
+                  <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                10,000 (10%)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
